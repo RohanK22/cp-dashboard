@@ -1,0 +1,12 @@
+Codeforces --- https://codeforces.com/apiHelp/methods#contest.list    
+	* user info - https://codeforces.com/api/user.rating?handle=Fefer_Ivan
+	* contest list - https://codeforces.com/api/contest.list?gym=true
+	* common problem list - https://codeforces.com/api/problemset.problems?tags=implementation
+
+Leetcode 
+	* user info and whole problem set -
+	  https://leetcode.com/api/problems/all/
+
+Hackkerank
+	* Contest info - https://www.hackerrank.com/contests
+	* CPP practice - https://www.hackerrank.com/domains/cpp
