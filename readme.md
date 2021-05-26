@@ -4,8 +4,8 @@ node.js, npm and git
 
 # Usage Command
 
-# 'git clone repo-url'
+### 'git clone repo-url'
 
-# npm install'
+### npm install'
 
-# npm start'
+### npm start'
