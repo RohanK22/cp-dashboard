@@ -1,10 +1,11 @@
 # Prereq
 
-node.js and npm
-git
+node.js, npm and git
 
 # Usage Command
 
-git clone repo-url
-npm install
-npm start
+# 'git clone repo-url'
+
+# npm install'
+
+# npm start'
