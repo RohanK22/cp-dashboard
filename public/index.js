@@ -91,6 +91,7 @@ function setQuestions(index) {
 		.then((data) => {
 			for (let d = 0; d < data.length; d++) {
 				let newDiv = document.createElement('div');
+				newDiv.setAttribute('class', 'question')
 				newDiv.innerHTML = `<p>${
 					d + 1
 				}. <a href="https://codeforces.com/contest/${
@@ -103,4 +104,21 @@ function setQuestions(index) {
 			questionsDiv.appendChild(qWrap);
 			console.log('Loaded ' + data.length + '  questions!');
 		});
+}
+
+function getRandomQuestion() {
+	// Fetch questions with particular index/division
+	const questionsDiv = document.getElementsByClassName('question');
+	let randomIndex = Math.floor(Math.random() * questionsDiv.length)
+	console.log(randomIndex)
+	const randomDiv = questionsDiv.item(randomIndex)
+	const randomQuestionDiv = document.getElementById('random-question')
+	console.log(randomQuestionDiv)
+	
+	// Remove any questions present before
+	while (randomQuestionDiv.firstChild) {
+        randomQuestionDiv.removeChild(randomQuestionDiv.firstChild);
+    }
+	
+	randomQuestionDiv.innerHTML = randomDiv.innerHTML
 }
