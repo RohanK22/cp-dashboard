@@ -1,5 +1,9 @@
 const apiBaseUrl = 'http://localhost:3000/api/';
 const username = 'rohank2205';
+const default_playlist = 'https://open.spotify.com/embed/playlist/37i9dQZEVXbLRQDuF5jeBp'
+if(!localStorage.getItem('spotify-uri')) {
+	localStorage.setItem("spotify-uri", default_playlist);
+}
 
 const codeforcesEle = document.getElementById('codeforces');
 
@@ -110,10 +114,8 @@ function getRandomQuestion() {
 	// Fetch questions with particular index/division
 	const questionsDiv = document.getElementsByClassName('question');
 	let randomIndex = Math.floor(Math.random() * questionsDiv.length)
-	console.log(randomIndex)
 	const randomDiv = questionsDiv.item(randomIndex)
 	const randomQuestionDiv = document.getElementById('random-question')
-	console.log(randomQuestionDiv)
 	
 	// Remove any questions present before
 	while (randomQuestionDiv.firstChild) {
@@ -121,4 +123,17 @@ function getRandomQuestion() {
     }
 	
 	randomQuestionDiv.innerHTML = randomDiv.innerHTML
+}
+
+const spotifyPlayerLink = document.getElementById('link')
+const frame = document.createElement('div')
+frame.innerHTML = '<iframe src="' + localStorage.getItem('spotify-uri') + '" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+
+spotifyPlayerLink.setAttribute('value', localStorage.getItem('spotify-uri'))
+
+document.getElementById('spotify-sidebar').appendChild(frame)
+
+spotifyPlayerLink.onchange = () => {
+	localStorage.setItem('spotify-uri', spotifyPlayerLink.value)	
+	location.reload()	
 }
