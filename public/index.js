@@ -1,4 +1,4 @@
-const apiBaseUrl = 'https://cp-dashboard.ml/api/';
+const apiBaseUrl = 'https://cp-dashboard-rohan.herokuapp.com/api/';
 let username = 'rohank2205';
 const default_playlist = 'https://open.spotify.com/embed/playlist/37i9dQZEVXbLRQDuF5jeBp'
 if(!localStorage.getItem('spotify-uri')) {
