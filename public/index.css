@@ -1,7 +1,7 @@
 #spotify-sidebar {
     float: right;
     position: sticky;
-    z-index: 100px;
+    z-index: -100px;
     align-content: center;
 }
 

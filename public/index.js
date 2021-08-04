@@ -1,11 +1,23 @@
-const apiBaseUrl = 'http://localhost:3000/api/';
-const username = 'rohank2205';
+const apiBaseUrl = 'https://cp-dashboard.ml/api/';
+let username = 'rohank2205';
 const default_playlist = 'https://open.spotify.com/embed/playlist/37i9dQZEVXbLRQDuF5jeBp'
 if(!localStorage.getItem('spotify-uri')) {
 	localStorage.setItem("spotify-uri", default_playlist);
 }
 
+if(!localStorage.getItem('codeforces-username')) {
+	localStorage.setItem("codeforces-username", username);
+} 
+
 const codeforcesEle = document.getElementById('codeforces');
+username = localStorage.getItem('codeforces-username')
+
+// Refresh on handle change
+const displayHandleEle = document.getElementById('handle');
+displayHandleEle.onchange = () => {
+	localStorage.setItem('codeforces-username', displayHandleEle.value)	
+	location.reload()	
+}
 
 // Set user info
 fetch('https://codeforces.com/api/user.rating?handle=' + username)
@@ -15,14 +27,18 @@ fetch('https://codeforces.com/api/user.rating?handle=' + username)
 		const currentRatingEle = document.getElementById('current-rating');
 		const contestDisplay = document.getElementById('contests-attended');
 
-		displayHandleEle.textContent = data.result[0].handle;
+		displayHandleEle.value = data.result[0].handle;
 		displayHandleEle.setAttribute(
 			'href',
 			'https://codeforces.com/profile/' + username
 		);
+		
+		// set user rating
 		currentRatingEle.textContent =
 			'Current User Rating: ' +
 			data.result[data.result.length - 1].newRating;
+		
+		// constest info
 		data.result = data.result.reverse();
 		for (let contest = 0; contest < data.result.length; contest++) {
 			let pTag = document.createElement('p');
